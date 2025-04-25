@@ -9,8 +9,6 @@ const nextConfig = {
   images: {
     unoptimized: true,
   },
-  allowedDevOrigins: ['http://localhost:3000', 'https://metahuman.vercel.app/'],
-
 }
 
 export default nextConfig

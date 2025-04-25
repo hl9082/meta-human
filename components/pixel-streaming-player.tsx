@@ -32,7 +32,7 @@ export default function PixelStreamingPlayer({ onConnectionStatus }: PixelStream
     setConnectionStatus("connecting")
 
     // Check if the environment variable is set
-    const pixelStreamingUrl = process.env.NEXT_PUBLIC_PIXEL_STREAMING_URL
+    const pixelStreamingUrl = 'wss://localhost:8888'
     if (!pixelStreamingUrl) {
       setLoadError("NEXT_PUBLIC_PIXEL_STREAMING_URL environment variable is not set")
     }

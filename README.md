@@ -67,7 +67,7 @@ Create a `.env.local` file in the root directory of the frontend project with th
 
 \`\`\`
 NEXT_PUBLIC_BACKEND_URL=http://localhost:8000
-NEXT_PUBLIC_PIXEL_STREAMING_URL=wss://localhost:8888
+NEXT_PUBLIC_PIXEL_STREAMING_URL=http://localhost:8888
 OPENAI_API_KEY=your_openai_api_key
 \`\`\`
 
