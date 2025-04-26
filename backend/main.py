@@ -173,7 +173,7 @@ async def generate_llm_response(messages: List[Message]) -> str:
     """
     try:
         # Get API key from environment
-        api_key = os.getenv("OPENAI_API_KEY")
+        api_key = os.getenv("https://github.com/AnimaVR/NeuroSync_Local_API")
         if not api_key:
             raise ValueError("OPENAI_API_KEY environment variable not set")
         
