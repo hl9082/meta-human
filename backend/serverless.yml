@@ -1,0 +1,14 @@
+service: metahuman-backend
+
+provider:
+  name: aws
+  runtime: python3.9
+  region: us-east-1
+
+functions:
+  app:
+    handler: main.handler
+    events:
+      - http:
+          path: /app
+          method: any
