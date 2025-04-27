@@ -97,11 +97,37 @@ async def health_check():
 async def api_root():
     return {"message": "Welcome to the MetaHuman API! Available: /api/chat (POST), /api/chat (GET for info), /api/tts (GET)", "status": "ok"}
 
+api_key = os.getenv("OPENAI_API_KEY")
+
+@app.post("/api/asr")
+async def speech_to_text(audio: UploadFile = File(...)):
+    """Receives an audio file and returns the transcript."""
+    if not OPENAI_API_KEY:
+        return JSONResponse({"detail": "OPENAI_API_KEY not set"}, status_code=500)
+    try:
+        async with httpx.AsyncClient(timeout=60) as client:
+            files = {
+                "file": (audio.filename, await audio.read(), audio.content_type),
+                "model": (None, "whisper-1"),
+            }
+            headers = {"Authorization": f"Bearer {OPENAI_API_KEY}"}
+            response = await client.post(
+                "https://api.openai.com/v1/audio/transcriptions",
+                headers=headers,
+                files=files,
+            )
+        if response.status_code == 200:
+            text = response.json().get("text", "")
+            return {"text": text}
+        else:
+            return JSONResponse({"detail": response.text}, status_code=response.status_code)
+    except Exception as e:
+        return JSONResponse({"detail": str(e)}, status_code=500)
 
 # ====== Helper Functions ======
 async def generate_llm_response(messages: List[Message]) -> str:
     try:
-        api_key = os.getenv("OPENAI_API_KEY")
+         
         if not api_key:
             raise ValueError("OPENAI_API_KEY environment variable not set")
         formatted_messages = [{"role": msg.role, "content": msg.content} for msg in messages]
