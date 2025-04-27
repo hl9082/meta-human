@@ -1,7 +1,0 @@
-{
-     "functions": {
-       "api/chat/route.ts": {
-         "runtime": "@vercel/python@3.12.6"
-       }
-     }
-   }
