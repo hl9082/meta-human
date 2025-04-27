@@ -93,7 +93,7 @@ async def root():
 async def health_check():
     return {"status": "healthy"}
 
-app.get("/api")
+@app.get("/api")
 async def api_root():
     return {"message": "Welcome to the MetaHuman API! Available: /api/chat (POST), /api/chat (GET for info), /api/tts (GET)", "status": "ok"}
 
