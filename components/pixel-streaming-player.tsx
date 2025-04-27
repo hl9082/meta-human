@@ -31,11 +31,14 @@ export default function PixelStreamingPlayer({ onConnectionStatus }: PixelStream
     // Simulate connecting to Pixel Streaming server
     setConnectionStatus("connecting")
 
+     
+
     // Check if the environment variable is set
-    const pixelStreamingUrl = "http://localhost:8888"
+    const pixelStreamingUrl = process.env.NEXT_PUBLIC_PIXEL_STREAMING_URL;
     if (!pixelStreamingUrl) {
       setLoadError("NEXT_PUBLIC_PIXEL_STREAMING_URL environment variable is not set")
     }
+    
 
     // Simulate connection delay
     const timer = setTimeout(() => {
