@@ -45,6 +45,10 @@ class ChatRequest(BaseModel):
     message: str
     messages: List[Message]
 
+@app.get("/")
+async def root():
+    return {"message": "Welcome to MetaHuman!"}
+
 # ====== Chat endpoints ======
 @app.post("/api/chat")
 async def chat(request: ChatRequest):
