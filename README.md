@@ -263,7 +263,7 @@ To run the complete demo, follow these steps in order:
    {
      "functions": {
        "api/**/*.py": {
-         "runtime": "python3.9"
+         "runtime": "python3.12.6"
        }
      }
    }
