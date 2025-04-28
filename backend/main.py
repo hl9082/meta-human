@@ -12,7 +12,7 @@ Endpoints:
 - GET /api/tts           : Demo TTS endpoint (text passed via ?text= param)
 """
 
-from fastapi import FastAPI, HTTPException, Request, Query
+from fastapi import FastAPI, HTTPException, Request, Query,File,UploadFile
 from fastapi.middleware.cors import CORSMiddleware
 from pydantic import BaseModel
 from typing import List, Dict, Any, Optional
