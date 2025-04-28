@@ -32,7 +32,8 @@ if (!hasMounted) return null;
 
     setConnectionStatus("connecting")
 
-    const pixelStreamingUrl = process.env.NEXT_PUBLIC_PIXEL_STREAMING_URL;
+    // Check if the environment variable is set
+    const pixelStreamingUrl = process.env.NEXT_PUBLIC_PIXEL_STREAMING_URL
     if (!pixelStreamingUrl) {
       setLoadError("NEXT_PUBLIC_PIXEL_STREAMING_URL environment variable is not set")
     }
